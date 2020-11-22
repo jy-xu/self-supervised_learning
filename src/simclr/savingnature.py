@@ -14,6 +14,7 @@ class SavingNatureDataset(Dataset):
         self.target_transform = None
         self.imgs = sorted(os.listdir(os.path.join(root, "images")))
         self.labels = sorted(os.listdir(os.path.join(root, "labels")))
+        self.targets, self.data = self._getdatatargets()
     
     def __getitem__(self, index):
         # load images and bounding boxes
@@ -42,7 +43,15 @@ class SavingNatureDataset(Dataset):
     
     def __len__(self):
          return len(self.imgs)
-
+    
+    def _getdatatargets(self):
+        targets = []
+        data = []
+        for i in len(self.imgs):
+            image, _, target = self.__getitem__(i)
+            targets.append(target)
+            data.append(image)
+        return torch.cat(targets, dim=1), torch.cat(data, dim=1)
         
 def get_dataloader(transform_train, transform_test, transform_no=None, data_dir='./data', batch_size=256, perc=1):
     trainset = SavingNatureDataset(root=data_dir + "/train", transform=transform_train, transform_no=transform_no)
