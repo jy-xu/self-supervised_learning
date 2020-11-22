@@ -7,10 +7,10 @@ import os
 import numpy as np
 
 class SavingNatureDataset(Dataset):
-    def __init__(self, root, transform=None, transform_org = None):
+    def __init__(self, root, transform=None, transform_no=None):
         self.root = root
         self.transform = transform
-        self.transform_org = transform_org
+        self.transform_no = transform_no
         self.target_transform = None
         self.imgs = sorted(os.listdir(os.path.join(root, "images")))
         self.labels = sorted(os.listdir(os.path.join(root, "labels")))
@@ -34,8 +34,8 @@ class SavingNatureDataset(Dataset):
         if self.target_transform is not None:
             target = self.target_transform(target)
             
-        if self.transform_org is not None:
-            x = self.transform_org(img)
+        if self.transform_no is not None:
+            x = self.transform_no(img)
             return xi, xj, x, target
         else:
             return xi, xj, target
