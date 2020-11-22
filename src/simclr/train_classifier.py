@@ -1,7 +1,7 @@
 import time
 import torch
 
-def train_classifier(model, epochs, trainloader, valloader, optimizer, scheduler, feature_model=None):
+def train_classifier(model, epochs, trainloader, valloader, optimizer, scheduler, device, criterion, feature_model=None):
     for epoch in range(epochs):
         start = time.time()
         feature_model.eval()

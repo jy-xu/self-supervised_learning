@@ -1,7 +1,7 @@
 import time
 import torch
 
-def pretrain_features(model, epochs, trainloader, valloader, optimizer, scheduler):
+def train_features(model, epochs, trainloader, valloader, optimizer, scheduler, device, criterion):
     for epoch in range(epochs):
         start = time.time()
         model.train()
