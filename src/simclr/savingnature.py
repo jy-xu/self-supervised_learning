@@ -47,7 +47,7 @@ class SavingNatureDataset(Dataset):
     def _getdatatargets(self):
         targets = []
         data = []
-        for i in len(self.imgs):
+        for i in range(len(self.imgs)):
             image, _, target = self.__getitem__(i)
             targets.append(target)
             data.append(image)
