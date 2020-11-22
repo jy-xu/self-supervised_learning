@@ -10,6 +10,7 @@ class SimCLR(nn.Module):
         base_encoder = self._get_base_encoder(base_model)
         in_ftrs = base_encoder.fc.in_features
         self.encoder = self._modify_encoder(base_encoder)
+        self.encoder.out_ftrs = in_ftrs
         self.projector = self._make_projector(in_ftrs, out_ftrs)
         
     def _get_base_encoder(self, base_model):
