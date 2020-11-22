@@ -5,6 +5,7 @@ from torch.utils.data import DataLoader, Subset
 from sklearn.model_selection import StratifiedShuffleSplit
 import os
 import numpy as np
+import torch
 
 class SavingNatureDataset(Dataset):
     def __init__(self, root, transform=None, transform_no=None):
