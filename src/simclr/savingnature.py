@@ -52,7 +52,7 @@ class SavingNatureDataset(Dataset):
             image, _, target = self.__getitem__(i)
             targets.append(target)
             data.append(image)
-        return torch.cat(targets, dim=1), torch.cat(data, dim=1)
+        return targets, data
         
 def get_dataloader(transform_train, transform_test, transform_no=None, data_dir='./data', batch_size=256, perc=1):
     trainset = SavingNatureDataset(root=data_dir + "/train", transform=transform_train, transform_no=transform_no)
