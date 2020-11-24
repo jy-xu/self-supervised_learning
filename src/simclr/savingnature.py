@@ -49,7 +49,7 @@ class SavingNatureDataset(Dataset):
         targets = []
         data = []
         for i in range(len(self.imgs)):
-            if transform_no is None:
+            if self.transform_no is None:
                 image, _, target = self.__getitem__(i)
             else:
                 image, _, _, target = self.__getitem__(i)
